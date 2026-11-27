@@ -17,9 +17,6 @@ def train_logistic_regression(X: np.ndarray, y: np.ndarray, lr: float = 0.1, ste
     for i in range(steps):
         z = np.asarray((X@w)+b,dtype = float)
         prob = _sigmoid(z)
-        for j in range(len(y)):
-            loss += y[j]*np.log2(prob[j]) + (1-y[j])*np.log2(1-prob[j])
-
         loss = -(loss/len(y))
         grad_w = X.T @(prob-y)/len(y)
         grad_b = np.mean(prob-y)
